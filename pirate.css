@@ -1,0 +1,26 @@
+
+#outer {
+    border: 10px solid rgb(0, 140, 255);
+    display: block;
+    margin: 20px auto;
+    background-image: url(img_meri.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+body {
+    background-image: url(img_map.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+img.hidden {
+    visibility: hidden;
+    position: absolute;
+}
+
+#outer {
+    width: 1050px;
+    height: 450px;
+}
+
