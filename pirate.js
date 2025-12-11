@@ -61,7 +61,6 @@ window.onload = function () {
         island.treasureY = island.y - 20;
     });
     
-
     //liike
     let speed = 3;
     let angle = 0;
