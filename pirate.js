@@ -32,7 +32,6 @@ window.onload = function () {
         {x: 3200, y: 90, img: images.islandtwo},
         {x: 4000, y: 50, img: images.islandone},
         {x: 4800, y: 70, img: images.islandone},
-        {x: 4800}
     ];
 
     const randomIslands = [...saaret].sort(() => Math.random() - 0.5);
