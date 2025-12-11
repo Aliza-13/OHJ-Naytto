@@ -90,7 +90,6 @@ window.onload = function () {
         { x: 4800, y: 120, hp: 300 }
         ];
 
-<<<<<<< HEAD
         saaret.forEach(s => {
             s.hasTreasure = false;
         });
@@ -99,8 +98,6 @@ window.onload = function () {
             s.hasTreasure = true;
         });
 
-=======
->>>>>>> c1c2b2a66f443c5682a03cf826fe669828c80ec0
         qteActive = false;
         qteKey = null;
         qteTimer = 0;
