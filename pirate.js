@@ -240,6 +240,12 @@ window.onload = function () {
         ctx.fillText("Klikkaa Start aloittaaksesi uudelleen", canvas.width / 2, canvas.height / 2 + 50);
     }
 
+    const okButton = document.getElementById("OK");
+
+    okButton.addEventListener("click", () => {
+    document.getElementById("ohjeet").style.display = "none";
+});
+
     startButton.addEventListener("click", () => {
         resetGame();  
 
