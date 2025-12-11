@@ -244,6 +244,9 @@ window.onload = function () {
             .forEach(s => {
                 s.hasTreasure = true;
                 s.hadTreasure = true;
+
+                s.treasureX = s.x + 50;
+                s.treasureY = s.y - 20;
         });
 
         gameStarted = true;
