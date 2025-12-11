@@ -55,13 +55,13 @@ window.onload = function () {
     //poimitaan 4 ja merkitään 
     randomIslands.slice(0, 4).forEach(island => {
         island.hasTreasure = true;
+        island.hadTreasure = true;
 
         //aarre-kuvan koordinaatit
         island.treasureX = island.x + 50;
         island.treasureY = island.y - 20;
     });
     
-
     //liike
     let speed = 3;
     let angle = 0;
@@ -90,6 +90,7 @@ window.onload = function () {
         { x: 4800, y: 120, hp: 300 }
         ];
 
+<<<<<<< HEAD
         saaret.forEach(s => {
             s.hasTreasure = false;
         });
@@ -98,6 +99,8 @@ window.onload = function () {
             s.hasTreasure = true;
         });
 
+=======
+>>>>>>> c1c2b2a66f443c5682a03cf826fe669828c80ec0
         qteActive = false;
         qteKey = null;
         qteTimer = 0;
@@ -201,12 +204,12 @@ window.onload = function () {
             ctx.fillStyle = "white";
             ctx.fillText(qteKey, qteX + 75, qteY + 90);
 
-            ctx.textAlign = "left"; 
+            ctx.textAlign = "left";
         }
     }
 
     // Victory näyttö
-    function drawVictory(collectedTreasures) {
+    function drawVictory(collected) {
         ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -217,7 +220,7 @@ window.onload = function () {
 
         ctx.font = "30px Arial";
         ctx.fillStyle = "white";
-        ctx.fillText(`Keräsit ${collectedTreasures} aarretta`, canvas.width / 2, canvas.height / 2 + 20);
+        ctx.fillText(`Keräsit ${collected} aarretta`, canvas.width / 2, canvas.height / 2 + 20);
 
         ctx.font = "20px Arial";
         ctx.fillText("Klikkaa Start aloittaaksesi uudelleen", canvas.width / 2, canvas.height / 2 + 60);
@@ -241,10 +244,25 @@ window.onload = function () {
     }
 
     startButton.addEventListener("click", () => {
-        if(!gameStarted) {
-            resetGame();
-            startButton.disabled = true;
-        }
+        resetGame();  
+
+        saaret.forEach(s => {
+            s.hasTreasure = false;
+            s.hadTreasure = false;
+        });
+
+        saaret.sort(() => Math.random() - 0.5)
+            .slice(0, 4)
+            .forEach(s => {
+                s.hasTreasure = true;
+                s.hadTreasure = true;
+
+                s.treasureX = s.x + 50;
+                s.treasureY = s.y - 20;
+        });
+
+        gameStarted = true;
+        startButton.disabled = true;
     });
 
     function update() {
@@ -293,7 +311,7 @@ window.onload = function () {
         // Voitto
         else if (pirateship.x >= worldWidth) {
             gameStarted = false;
-            let collected = saaret.filter(s => !s.hasTreasure).length;
+            let collected = saaret.filter(s => s.hadTreasure && !s.hasTreasure).length;
             drawVictory(collected);
             startButton.disabled = false;
         }
